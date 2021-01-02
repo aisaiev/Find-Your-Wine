@@ -1,6 +1,6 @@
 import { fromEventPattern, Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { Message_Type } from 'src/app/app.constants';
+import { MESSAGE_TYPE } from 'src/app/app.constants';
 import { IMessageEvent } from '../model/message-event.model';
 import { IMessage } from '../model/message.model';
 import { IWineRating } from '../model/wine-rating.model';
@@ -8,7 +8,7 @@ import { IWineRating } from '../model/wine-rating.model';
 export const getWineRating = (wineName: string): Observable<IWineRating> => {
   return new Observable(
     observer => chrome.runtime.sendMessage({
-      type: Message_Type.GET_WINE_RATING,
+      type: MESSAGE_TYPE.GET_WINE_RATING,
       data: wineName
     }, rating => {
       observer.next(rating);

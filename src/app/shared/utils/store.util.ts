@@ -1,10 +1,10 @@
-import { AUCHAN_HOST, AUCHAN_WINE_DEPARTMENT, WINE_TIME_HOST, WINE_TIME_WINE_DEPARTMENT } from 'src/app/app.constants';
+import { AUCHAN_HOST, GOOD_WINE_HOST, WINE_TIME_HOST } from 'src/app/app.constants';
 
-export const isAuchanWineDepartment = () => {
-  return window.location.host.includes(AUCHAN_HOST) && window.location.pathname.includes(AUCHAN_WINE_DEPARTMENT);
+export const isAuchanWineDepartment = (): boolean => {
+  return window.location.host.includes(AUCHAN_HOST) && window.location.pathname.includes('wine');
 };
 
-export const isWineTimeWineDepartment = () => {
+export const isWineTimeWineDepartment = (): boolean => {
   return window.location.host.includes(WINE_TIME_HOST)
     && (window.location.pathname.includes('wine/')
     || window.location.pathname.includes('wines')
@@ -26,4 +26,10 @@ export const isWineTimeWineDepartment = () => {
     || window.location.pathname.includes('sauvignon-blanc.htm')
     || window.location.pathname.includes('riesling.htm')
     || window.location.pathname.includes('muscat.htm'));
+};
+
+export const isGoodWineWineDepartment = (): boolean => {
+  return window.location.host.includes(GOOD_WINE_HOST)
+    && (window.location.pathname.includes('vino')
+    || window.location.pathname.includes('igristye'));
 };

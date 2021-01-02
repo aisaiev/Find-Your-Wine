@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "Find Your Wine 🍷",
   "short_name": "Find Your Wine 🍷",
-  "description": "The easiest way to find your wine in the different stores. Compatible with auchan.zakaz.ua and winetime.com.ua",
+  "description": "The easiest way to find your wine in the different stores. Compatible with winetime.com.ua, goodwine.com.ua and auchan.zakaz.ua",
   "author": "Anton Isaiev",
   "version": "1.0",
   "permissions": [
@@ -20,7 +20,8 @@
     {
       "matches": [
         "*://auchan.zakaz.ua/*",
-        "*://winetime.com.ua/*"
+        "*://winetime.com.ua/*",
+        "*://goodwine.com.ua/*"
       ],
       "js": [
         "content-script.js",

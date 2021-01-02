@@ -20,7 +20,7 @@ const getBadgeHtml = (wineRating: IWineRating): string => {
       d="M18 2.0845
         a 15.9155 15.9155 0 0 1 0 31.831
         a 15.9155 15.9155 0 0 1 0 -31.831"></path>
-    <text x="18" y="23" style="stroke: #312A29; text-anchor: middle;">${wineRating.score}</text>
+    <text x="18" y="23" style="font-size: 14px; stroke: #312A29; text-anchor: middle;">${wineRating.score}</text>
   </svg>`;
 };
 
@@ -49,6 +49,24 @@ export const createWineTimeWineRatingBadge = (wineRating: IWineRating): Element 
   badge.style.position = 'absolute';
   badge.style.right = '5px';
   badge.style.top = '47%';
+  badge.style.height = '30px';
+  badge.style.cursor = 'pointer';
+  badge.innerHTML = getBadgeHtml(wineRating);
+  badge.addEventListener('click', (event: MouseEvent) => {
+    event.stopPropagation();
+    event.preventDefault();
+    window.open(wineRating.link, '_blank');
+  });
+  return badge;
+};
+
+export const createGoodWineWineRatingBadge = (wineRating: IWineRating): Element => {
+  const badge = document.createElement('div');
+  badge.title = `${wineRating.reviewsCount} reviews in Vivino`;
+  badge.classList.add('vivino-rating');
+  badge.style.position = 'absolute';
+  badge.style.right = '0';
+  badge.style.top = '0';
   badge.style.height = '30px';
   badge.style.cursor = 'pointer';
   badge.innerHTML = getBadgeHtml(wineRating);

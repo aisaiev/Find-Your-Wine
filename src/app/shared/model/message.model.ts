@@ -1,6 +1,6 @@
-import { Message_Type } from 'src/app/app.constants';
+import { MESSAGE_TYPE } from 'src/app/app.constants';
 
 export interface IMessage {
-  type: Message_Type;
+  type: MESSAGE_TYPE;
   data: any;
 }

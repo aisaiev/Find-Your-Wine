@@ -1,0 +1,35 @@
+{
+  "manifest_version": 2,
+  "name": "Find Your Wine 🍷",
+  "short_name": "Find Your Wine 🍷",
+  "description": "The easiest way to find your wine in the different stores. Compatible with auchan.zakaz.ua and winetime.com.ua",
+  "author": "Anton Isaiev",
+  "version": "1.0",
+  "permissions": [
+    "tabs"
+  ],
+  "background": {
+    "scripts": [
+        "background.js",
+        "runtime.js",
+        "vendor.js"
+    ],
+    "persistent": true
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://auchan.zakaz.ua/*",
+        "*://winetime.com.ua/*"
+      ],
+      "js": [
+        "content-script.js",
+        "runtime.js",
+        "vendor.js"
+      ]
+    }
+  ],
+  "icons": {
+    "128": "assets/img/icon.png"
+  }
+}

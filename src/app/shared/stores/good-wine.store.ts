@@ -10,7 +10,6 @@ export const addGoodWineWineRating = (): void => {
   if (isGoodWineWineDepartment()) {
     const interval = setInterval(() => {
       const wineListItems = getWineListItems().filter(wineItem => !wineItem.querySelector('.vivino-rating'));
-      console.log(wineListItems);
       if (wineListItems.length > 0) {
         clearInterval(interval);
         from(wineListItems).pipe(

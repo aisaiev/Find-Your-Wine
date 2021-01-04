@@ -19,7 +19,6 @@ function contentMessageListener(message: IMessage, sender: chrome.runtime.Messag
 }
 
 function tabsUpdatedListener(tabId: number, changeInfo: chrome.tabs.TabChangeInfo, tab: chrome.tabs.Tab): void {
-  console.log(tab);
   if (tab.status === TAB_STATUS.COMPLETE && tab.url.includes(AUCHAN_HOST)) {
     sendMessageToContent(tabId, {
       type: MESSAGE_TYPE.AUCHAN_PAGE_CHANGED,

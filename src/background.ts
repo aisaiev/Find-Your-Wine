@@ -19,17 +19,17 @@ function contentMessageListener(message: IMessage, sender: chrome.runtime.Messag
 }
 
 function tabsUpdatedListener(tabId: number, changeInfo: chrome.tabs.TabChangeInfo, tab: chrome.tabs.Tab): void {
-  if (tab.status === TAB_STATUS.COMPLETE && tab.url.includes(AUCHAN_HOST)) {
+  if (tab.url.includes(AUCHAN_HOST)) {
     sendMessageToContent(tabId, {
       type: MESSAGE_TYPE.AUCHAN_PAGE_CHANGED,
       data: undefined
     });
-  } else if (tab.status === TAB_STATUS.COMPLETE && tab.url.includes(WINE_TIME_HOST)) {
+  } else if (tab.url.includes(WINE_TIME_HOST)) {
     sendMessageToContent(tabId, {
       type: MESSAGE_TYPE.WINE_TIME_PAGE_CHANGED,
       data: undefined
     });
-  } else if (tab.status === TAB_STATUS.COMPLETE && tab.url.includes(GOOD_WINE_HOST)) {
+  } else if (tab.url.includes(GOOD_WINE_HOST)) {
     sendMessageToContent(tabId, {
       type: MESSAGE_TYPE.GOOD_WINE_PAGE_CHANGED,
       data: undefined

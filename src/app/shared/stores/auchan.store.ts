@@ -37,9 +37,11 @@ function getRating(wineItem: Element): Observable<IWineRating> {
 }
 
 function addRating(wineItem: Element, wineRating: IWineRating): void {
-  const item = wineItem.querySelector('div[data-testid="productTileWeight"]');
-  const wineRatingBadge = createAuchanWineRatingBadge(wineRating);
-  item.insertAdjacentElement('afterend', wineRatingBadge);
+  if (!wineItem.querySelector('.vivino-rating')) {
+    const item = wineItem.querySelector('div[data-testid="productTileWeight"]');
+    const wineRatingBadge = createAuchanWineRatingBadge(wineRating);
+    item.insertAdjacentElement('afterend', wineRatingBadge);
+  }
 }
 
 function getWineName(wineTitle: string): string {

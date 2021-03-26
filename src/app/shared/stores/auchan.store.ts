@@ -27,11 +27,11 @@ export const addAuchanWineRating = (): void => {
 };
 
 function getWineListItems(): Element[] {
-  return [...document.querySelectorAll('.products-box__list-item')];
+  return [...document.querySelectorAll('div[class~="ProductsBox__listItem"]')];
 }
 
 function getRating(wineItem: Element): Observable<IWineRating> {
-  const wineTitle = wineItem.querySelector('span[data-testid="product_tile_title"]').textContent;
+  const wineTitle = wineItem.querySelector('span[class~="ProductTile__title"]').textContent;
   const wineName = getWineName(wineTitle);
   return getWineRating(wineName);
 }

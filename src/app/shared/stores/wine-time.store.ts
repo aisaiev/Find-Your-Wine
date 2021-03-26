@@ -4,6 +4,7 @@ import { IWineRating } from '../model/wine-rating.model';
 import { getWineRating } from '../service/message.service';
 import { createWineTimeWineRatingBadge } from '../utils/badge.util';
 import { isWineTimeWineDepartment } from '../utils/store.util';
+import { debounce } from 'lodash';
 
 export const addWineTimeWineRating = (): void => {
   if (isWineTimeWineDepartment()) {
@@ -23,21 +24,28 @@ export const addWineTimeWineRating = (): void => {
         ).subscribe();
       }
     }, 500);
+
+    document.removeEventListener('scroll', loadingWinesListener);
+    document.addEventListener('scroll', loadingWinesListener);
   }
 };
 
+const loadingWinesListener = debounce(() => {
+  addWineTimeWineRating();
+}, 2000);
+
 function getWineListItems(): Element[] {
-  return [...document.querySelectorAll('.tovar_one')];
+  return [...document.querySelectorAll('.products-main-slider-item')];
 }
 
 function getRating(wineItem: Element): Observable<IWineRating> {
-  const wineName = wineItem.querySelector('.mainlink').textContent;
+  const wineName = wineItem.querySelector('.p-title').textContent;
   return getWineRating(wineName);
 }
 
 function addRating(wineItem: Element, wineRating: IWineRating): void {
   if (!wineItem.querySelector('.vivino-rating')) {
-    const item = wineItem.querySelector('.item-block-head_main');
+    const item = wineItem.querySelector('.products-main-slider-item-wrapper .p-main-slider-item-top');
     const wineRatingBadge = createWineTimeWineRatingBadge(wineRating);
     item.appendChild(wineRatingBadge);
   }

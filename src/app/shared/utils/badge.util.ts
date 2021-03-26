@@ -47,8 +47,8 @@ export const createWineTimeWineRatingBadge = (wineRating: IWineRating): Element 
   badge.title = `${wineRating.reviewsCount} reviews in Vivino`;
   badge.classList.add('vivino-rating');
   badge.style.position = 'absolute';
-  badge.style.right = '5px';
-  badge.style.top = '47%';
+  badge.style.right = '0px';
+  badge.style.bottom = '0px';
   badge.style.height = '30px';
   badge.style.cursor = 'pointer';
   badge.innerHTML = getBadgeHtml(wineRating);

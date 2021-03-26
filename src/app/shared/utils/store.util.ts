@@ -7,6 +7,7 @@ export const isAuchanWineDepartment = (): boolean => {
 export const isWineTimeWineDepartment = (): boolean => {
   return window.location.host.includes(WINE_TIME_HOST)
     && (window.location.pathname.includes('wine/')
+    || window.location.pathname.includes('wine')
     || window.location.pathname.includes('wines')
     || window.location.pathname.includes('-wine')
     || window.location.pathname.includes('lambrusko.htm')
